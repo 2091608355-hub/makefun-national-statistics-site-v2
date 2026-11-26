@@ -1,0 +1,130 @@
+/* China by Numbers — stylesheet written by hand, no framework, no web fonts. */
+:root {
+  --ink: #182230;
+  --muted: #55677d;
+  --line: #dde5ee;
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --deep: #16233f;
+  --blue: #1e40af;
+  --blue-soft: #dbeafe;
+  --teal: #0e7490;
+  --green: #166534;
+  --red: #b91c1c;
+  --amber: #f59e0b;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+/* Header bar */
+.topbar { background: var(--deep); color: #fff; position: sticky; top: 0; z-index: 10; }
+.topbar-inner { display: flex; align-items: center; gap: 18px; min-height: 56px; }
+.brand { color: #fff; text-decoration: none; font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.brand-mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px; background: #c8102e; color: #fff;
+  font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800;
+}
+.mainnav { display: flex; gap: 2px; margin-left: auto; flex-wrap: wrap; }
+.mainnav a {
+  color: #cbd5e1; text-decoration: none; font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px; padding: 8px 12px; border-radius: 8px;
+}
+.mainnav a:hover { color: #fff; background: rgba(255,255,255,.12); }
+.mainnav a.active { color: #fff; background: var(--blue); }
+.year-chip {
+  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 700;
+  background: var(--amber); color: var(--ink); border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+}
+
+/* Page body copy */
+main { padding: 28px 0 8px; }
+h1 { font-size: 34px; line-height: 1.15; margin: 4px 0 8px; }
+h2 { font-size: 22px; margin: 28px 0 10px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+h3 { font-size: 17px; margin: 0 0 6px; }
+.lede { color: var(--muted); font-size: 17px; margin: 0 0 20px; max-width: 760px; }
+.kicker { font-family: Arial, Helvetica, sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+a { color: var(--blue); }
+
+/* Headline number cards */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0 6px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.card .card-label { font-family: Arial, Helvetica, sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.card .card-value { font-size: 30px; font-weight: 700; margin: 4px 0 2px; }
+.card .card-change { font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: var(--green); }
+.card .card-change.down { color: var(--red); }
+.card .card-note { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: var(--muted); }
+
+/* Two-column layout and panels */
+.columns { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; align-items: start; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.panel p { margin: 6px 0; }
+canvas.chart { width: 100%; height: auto; display: block; }
+.chart-note { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+/* Horizontal bars for age groups and industry shares */
+.bar-row { display: grid; grid-template-columns: 92px 1fr 110px; gap: 10px; align-items: center; margin: 10px 0; font-family: Arial, Helvetica, sans-serif; font-size: 13px; }
+.bar-track { height: 18px; background: #e8edf2; border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 999px; display: block; }
+.bar-num { text-align: right; color: var(--muted); }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .6px; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr:hover td { background: #f1f5f9; }
+th button { background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; text-transform: uppercase; letter-spacing: .6px; }
+th button:hover { color: var(--blue); }
+
+/* Controls */
+.control-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 12px 0; font-family: Arial, Helvetica, sans-serif; }
+.control-row label { font-size: 14px; color: var(--muted); }
+select, input[type="search"] {
+  font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--line);
+  border-radius: 8px; background: #fff; color: var(--ink);
+}
+input[type="search"] { min-width: 220px; }
+
+/* Label-and-value fact lists */
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 22px; }
+.facts > div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--line); padding: 8px 0; font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+.facts b { font-variant-numeric: tabular-nums; text-align: right; }
+
+.callout { background: var(--blue-soft); border-left: 4px solid var(--blue); border-radius: 8px; padding: 12px 16px; margin: 16px 0; }
+.callout p { margin: 4px 0; }
+.bottom { margin-top: 36px; border-top: 1px solid var(--line); padding: 18px 0 28px; color: var(--muted); font-size: 13px; font-family: Arial, Helvetica, sans-serif; }
+.bottom p { margin: 4px 0; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+
+/* Phones */
+@media (max-width: 760px) {
+  h1 { font-size: 27px; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .columns { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr; }
+  .topbar-inner { flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
+  .mainnav { margin-left: 0; order: 3; width: 100%; }
+  .mainnav a { padding: 6px 9px; }
+  .year-chip { margin-left: auto; }
+  .card .card-value { font-size: 24px; }
+  table { font-size: 13px; }
+  th, td { padding: 7px 6px; }
+}
+@media (max-width: 420px) {
+  .cards { grid-template-columns: 1fr; }
+  .bar-row { grid-template-columns: 64px 1fr 92px; }
+}
